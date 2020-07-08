@@ -69,10 +69,6 @@ const generateProjects = projectsArr => {
   `;
 };
 
-module.exports = templateData => {
-  // destructure page data by section
-  const { projects, about, ...header } = templateData;
-
 <main class="container my-5">
   ${generateAbout(about)}
   ${generateProjects(projects)}
