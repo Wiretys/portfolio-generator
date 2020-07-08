@@ -39,7 +39,7 @@ const promptUser = () => {
       name: 'about',
       message: 'Provide some information about yourself:',
       when: ({ confirmAbout }) => confirmAbout
-    }  
+    }
   ]);
 };
 
@@ -131,9 +131,18 @@ promptUser()
   .then(promptProject)
   .then(portfolioData => {
     console.log(portfolioData);
+    const pageHTML = generatePage(portfolioData);
+
+    fs.writeFile('./index.html', pageHTML, err => {
+      if (err) throw new Error(err);
+
+      console.log('Page created! Check out index.html in this directory to see it!');
+    });
   });
 
-  // console.log(profileDataArgs);
+  
+
+// console.log(profileDataArgs);
 
 // const printProfileData = profileDataArr => {
 //   for (let i = 0; i < profileDataArr.length; i += 1) {
@@ -147,7 +156,7 @@ promptUser()
 // const profileDataArgs = process.argv.slice(2, process.argv.length);
 
 // const fs = require('fs');
-// const generatePage = require('./src/page-template.js');
+const generatePage = require('./src/page-template.js');
 // const name = profileDataArgs[0];
 // const github = profileDataArgs[1];
 
